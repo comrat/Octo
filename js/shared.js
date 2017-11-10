@@ -33,29 +33,25 @@ function unpackOptions(emulator, options) {
 }
 
 function setRenderTarget(scale, canvas) {
-	scaleFactor = scale;
+	// scaleFactor = scale;
 	renderTarget = canvas;
 	var c = document.getElementById(canvas);
 
 	// Remove any existing previous delta frame so first frame is always drawn:
 	c.last = undefined;
 
-	var w  = scaleFactor * 128;
-	var h  = scaleFactor *  64;
-	var wm = (scaleFactor * -64) + "px";
-	var hm = (scaleFactor * -32) + "px";
+	var w  = c.width;
+	var h  = c.height;
+
+	scaleFactor = w / 128
 
 	if (emulator.screenRotation == 90 || emulator.screenRotation == 270) {
 		c.width  = h;
 		c.height = w;
-		c.style.marginLeft = hm;
-		c.style.marginTop  = wm;
 	}
 	else {
 		c.width  = w;
 		c.height = h;
-		c.style.marginLeft = wm;
-		c.style.marginTop  = hm;
 	}
 }
 
