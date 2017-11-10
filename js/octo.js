@@ -65,6 +65,10 @@ function display(rom) {
 var intervalHandle = null;
 var emulator = new Emulator();
 
+function runBinary(data) {
+	runRom({ rom:data, breakpoints:{}, aliases:{}, labels:{} });
+}
+
 function run() {
 	runRom(compile());
 }
