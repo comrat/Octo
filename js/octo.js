@@ -65,7 +65,15 @@ function display(rom) {
 var intervalHandle = null;
 var emulator = new Emulator();
 
-function runBinary(data) {
+function runWithOptions(data, options) {
+	emulator.tickrate = options.tickrate;
+	unpackOptions(emulator, options);
+	if (emulator.enableXO)
+		setEnableXO(emulator.enableXO);
+	runBin(data);
+}
+
+function runBin(data) {
 	runRom({ rom:data, breakpoints:{}, aliases:{}, labels:{} });
 }
 
